@@ -33,8 +33,10 @@ export class AppSignUpComponent implements OnInit {
     this.user.username = this.user.email.split('@')[0];
     this.http.post<PostUser>(environment.apiUrl + 'users/', this.user).subscribe(
       data => {
-        environment.user.id = data.id;
-        this.router.navigate(['/login']);
+        localStorage.setItem('currentUser', JSON.stringify({
+          email: data.email,
+        }));
+        this.router.navigate(['/logIn']);
       },
       err => {
         console.log(err.status);

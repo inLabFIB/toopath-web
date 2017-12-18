@@ -5,9 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://147.83.153.201:8080/',
-  user: {
-    'id': 0,
-    'token': ''
-  }
+  apiUrl: 'http://127.0.0.1:8000/',
 };

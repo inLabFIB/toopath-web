@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">TooPath</a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li *ngIf="isLogged" class="nav-item">
+        <a class="nav-link" routerLink="/myDevices">My Devices</a>
+      </li>
+      <li *ngIf="isLogged" class="nav-item">
+        <a class="nav-link" routerLink="/map">Map</a>
+      </li>
+    </ul>
+    <button *ngIf="!isLogged" class="btn navbar-btn" routerLink="/logIn" routerLinkActive="active">Log In</button>
+    <button *ngIf="!isLogged" class="btn btn-success navbar-btn" routerLink="/signUp" routerLinkActive="active">Sign Up</button>
+    <a *ngIf="isLogged" class="nav-link" routerLink="/profile">{{currentUser.first_name}}</a>
+    <button *ngIf="isLogged" class="btn btn-danger navbar-btn" (click)="logOut()" routerLink="/logIn" routerLinkActive="active">Log Out</button>
+  </div>
+</nav>

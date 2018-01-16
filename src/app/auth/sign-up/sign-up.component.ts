@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../user';
+import {User} from '../../objects/user';
 import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 import {Router} from '@angular/router';
 
 interface PostUser {
@@ -14,8 +14,8 @@ interface PostUser {
 
 @Component({
   selector: 'app-app-sign-up',
-  templateUrl: './app-sign-up.component.html',
-  styleUrls: ['./app-sign-up.component.css']
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
 })
 
 export class AppSignUpComponent implements OnInit {

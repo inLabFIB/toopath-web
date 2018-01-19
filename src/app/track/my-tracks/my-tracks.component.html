@@ -1,0 +1,14 @@
+<button class="btn btn-success" routerLink="/devices/{{deviceId}}/tracks/add" routerLinkActive="active">Create track
+</button>
+<div *ngFor="let track of tracks" class="card bg-light mt-3">
+  <div class="card-header">
+    {{track.name}}
+    <button class="btn btn-danger float-right" (click)="sendDeleteTrack(track)">Delete</button>
+    <button class="btn btn-info float-right mr-2" routerLink="/devices/{{deviceId}}/tracks/{{track.tid}}/edit"
+            routerLinkActive="active">Edit
+    </button>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{track.description}}</p>
+  </div>
+</div>

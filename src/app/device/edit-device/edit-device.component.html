@@ -1,0 +1,45 @@
+<form (ngSubmit)="sendPutDevice()" #logInForm="ngForm">
+  <h1>Edit device</h1>
+
+  <div class="form-group">
+    <label for="device-name">Name</label>
+    <input type="text" class="form-control" id="device-name" [(ngModel)]="device.name" required name="deviceName"
+           value="{{device.name}}">
+  </div>
+
+  <div class="form-group">
+    <label for="device-description">Description</label>
+    <input type="text" class="form-control" id="device-description" [(ngModel)]="device.description" required
+           name="deviceDescription" value="{{device.description}}">
+  </div>
+
+  <div class="form-group">
+    <label for="device-type">Type</label>
+    <select type="text" class="form-control" id="device-type" [(ngModel)]="device.device_type" required
+            name="deviceType" value="{{device.device_type}}">
+      <option value="ad">Android</option>
+      <option value="io">iPhone</option>
+      <option value="wp">Windows Phone</option>
+      <option value="en">Enfora</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="device-imei">IMEI</label>
+    <input type="text" class="form-control" id="device-imei" [(ngModel)]="device.device_imei" name="deviceIMEI"
+           value="{{device.device_imei}}">
+  </div>
+
+  <div class="form-group">
+    <label for="device-privacy">Privacy</label>
+    <select type="text" class="form-control" id="device-privacy" [(ngModel)]="device.device_privacy" required
+            name="devicePrivacy" value="{{device.device_privacy}}">
+      <option value="pr">Private</option>
+      <option value="pu">Public</option>
+      <option value="an">Anonymous</option>
+      <option value="fr">Friends</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-success btn-block">Save</button>
+</form>

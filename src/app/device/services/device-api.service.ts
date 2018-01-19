@@ -1,35 +1,33 @@
 import {Injectable} from '@angular/core';
 import {Device} from "../../objects/device";
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
 import {environment} from "../../../environments/environment";
-import {GetDevices} from "../../shared/interfaces/device.interface";
-
-const DEVICE_URL = 'devices/';
+import {Observable} from "rxjs/Observable";
+import {DEVICE_URL} from "../../shared/constants";
 
 @Injectable()
 export class DeviceApiService {
-  constructor(private http: HttpClient, private _router: Router) {
+  constructor(private http: HttpClient) {
   }
 
-  postDevice(device: Device) {
-    this.http.post(environment.apiUrl + DEVICE_URL, device).subscribe(
-      success => {
-        this._router.navigate(['/myDevices']);
-      },
-      err => {
-        console.log(err);
-      });
+  postDevice(device: Device): Observable<any> {
+    return this.http.post(environment.apiUrl + DEVICE_URL, device);
   }
 
-  getDevices(devices: Device[]) {
-    this.http.get<GetDevices>(environment.apiUrl + DEVICE_URL).subscribe(
-      data => {
-        console.log(data.devices[0]);
-      },
-      err => {
-        console.log(err);
-      }
-    )
+  getDevices(): Observable<any> {
+    return this.http.get(environment.apiUrl + DEVICE_URL);
+  }
+
+  getDevice(deviceId: number): Observable<any> {
+    return this.http.get(environment.apiUrl + DEVICE_URL + deviceId + '/');
+  }
+
+  putDevice(device: Device): Observable<any> {
+    return this.http.put(environment.apiUrl + DEVICE_URL + device.did + '/', device);
+  }
+
+
+  deleteDevice(deviceId: number): Observable<any> {
+    return this.http.delete(environment.apiUrl + DEVICE_URL + deviceId + '/');
   }
 }

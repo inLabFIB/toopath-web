@@ -1,7 +1,17 @@
-<button class="btn btn-success navbar-btn" routerLink="/newDevice" routerLinkActive="active">Create device</button>
-<div class="card">
-  <div class="card-block">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<h2>Devices of {{user.first_name}}</h2>
+<button class="btn btn-success" routerLink="/devices/add" routerLinkActive="active">Create device</button>
+<div *ngFor="let device of devices" class="card bg-light mt-3">
+  <div class="card-header">
+    {{device.name}}
+    <button class="btn btn-danger float-right" (click)="sendDeleteDevice(device)">Delete</button>
+    <button class="btn btn-info float-right mr-2" routerLink="/devices/{{device.did}}/edit" routerLinkActive="active">Edit
+    </button>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{device.description}}</p>
+    <button class="btn btn-primary float-right" routerLink="/devices/{{device.did}}/tracks" routerLinkActive="active">
+      See
+      tracks
+    </button>
   </div>
 </div>

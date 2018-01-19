@@ -56,7 +56,7 @@ export class AuthUserService implements CanActivate {
         }));
         this.setToken(data.token);
         this.announceIsLogged();
-        this._router.navigate(['/myDevices']);
+        this._router.navigate(['/devices']);
       },
       err => {
         console.log(err.status);

@@ -15,6 +15,11 @@ import {appRoutes} from './routes';
 import {NewDeviceComponent} from './device/new-device/new-device.component';
 import {DeviceApiService} from "./device/services/device-api.service";
 import {AuthInterceptor} from "./shared/interceptors/auth-interceptor";
+import { MyTracksComponent } from './track/my-tracks/my-tracks.component';
+import { NewTrackComponent } from './track/new-track/new-track.component';
+import {TrackApiService} from "./track/services/track-api.service";
+import { EditDeviceComponent } from './device/edit-device/edit-device.component';
+import { EditTrackComponent } from './track/edit-track/edit-track.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,11 @@ import {AuthInterceptor} from "./shared/interceptors/auth-interceptor";
     AppSignUpComponent,
     AppLogInComponent,
     AppMyDevicesComponent,
-    NewDeviceComponent
+    NewDeviceComponent,
+    MyTracksComponent,
+    NewTrackComponent,
+    EditDeviceComponent,
+    EditTrackComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +48,8 @@ import {AuthInterceptor} from "./shared/interceptors/auth-interceptor";
       multi: true
     },
     AuthUserService,
-    DeviceApiService
+    DeviceApiService,
+    TrackApiService
   ],
   bootstrap: [AppComponent]
 })

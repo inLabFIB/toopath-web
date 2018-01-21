@@ -1,6 +1,6 @@
 # TooPath Web
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
+This project was developed as a front-end of the **[TooPath API](https://github.com/AlbertWayne/TooPath)**.
 
 ## Getting Started
 

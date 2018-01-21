@@ -1,6 +1,19 @@
-# ToopathWeb
+# TooPath Web
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+* Install **[Node.js 8.9.4](https://nodejs.org/en/download/)**.
+* Install **Angular CLI 1.6.0** via ```npm install -g @angular/cli```.
+
+### Dependencies
+
+To install the web dependencies just run ```npm install```.
 
 ## Development server
 
@@ -22,6 +35,16 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## Built With
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* **[Angular 5](https://github.com/angular/angular)** - Framework used.
+* **[Angular CLI](https://github.com/angular/angular-cli)** - Command Line Interpreter.
+* **[Bootstrap 4](https://github.com/twbs/bootstrap)** - CSS Library.
+
+## Authors
+
+* Albert Díaz Benitez - *First stable version* - **[AlbertWayne](https://github.com/AlbertWayne)**
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/AlbertWayne/TooPath-Web/tags). 

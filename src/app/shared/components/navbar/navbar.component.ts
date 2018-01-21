@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthUserService} from "../../../auth/services/auth-user.service";
-import {User} from "../../../objects/user";
+import {AuthUserService} from '../../../auth/services/auth-user.service';
+import {User} from '../../../objects/user';
 
 @Component({
   selector: 'app-navbar',
@@ -20,8 +20,8 @@ export class AppNavbarComponent implements OnInit {
       if (isLogged) {
         this.currentUser = this._authUserService.getCurrentUser();
       }
-      this.isLogged = isLogged
-    })
+      this.isLogged = isLogged;
+    });
   }
 
   logOut() {

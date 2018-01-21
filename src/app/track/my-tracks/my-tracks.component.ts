@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Track} from "../../objects/track";
-import {ActivatedRoute} from "@angular/router";
-import {TrackApiService} from "../services/track-api.service";
+import {Track} from '../../objects/track';
+import {ActivatedRoute} from '@angular/router';
+import {TrackApiService} from '../services/track-api.service';
 
 @Component({
   selector: 'app-my-tracks',
@@ -12,11 +12,13 @@ export class MyTracksComponent implements OnInit {
 
   tracks: Track[];
   deviceId: number;
+  deviceName: string;
 
   constructor(private _activatedRoute: ActivatedRoute, private _trackApiService: TrackApiService) {
   }
 
   ngOnInit() {
+    this.deviceName = localStorage.getItem('currentDeviceName');
     this._activatedRoute.params.subscribe(async params => {
       this.deviceId = params['deviceId'];
       this._trackApiService.getTracks(this.deviceId).subscribe(
@@ -38,6 +40,10 @@ export class MyTracksComponent implements OnInit {
           this.tracks.splice(index, 1);
         }
       });
+  }
+
+  saveTrackName(trackName: string) {
+    localStorage.setItem('currentTrackName', trackName);
   }
 
 }

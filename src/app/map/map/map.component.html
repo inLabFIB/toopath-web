@@ -1,0 +1,8 @@
+<div class="map" leaflet *ngIf="!noTracks" [leafletOptions]="options" [leafletLayersControl]="layersControl"
+     (leafletMapReady)="onMapReady($event)">
+</div>
+<div *ngIf="noTracks">
+  <p>It seems that you don't have any device or track created. You can create it
+    <a style="text-decoration: underline" routerLink="/devices">here</a>.
+  </p>
+</div>

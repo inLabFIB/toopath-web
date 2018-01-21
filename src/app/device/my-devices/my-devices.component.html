@@ -1,17 +1,29 @@
 <h2>Devices of {{user.first_name}}</h2>
-<button class="btn btn-success" routerLink="/devices/add" routerLinkActive="active">Create device</button>
-<div *ngFor="let device of devices" class="card bg-light mt-3">
+
+<p class="mt-2">These are all your devices, if you want you can
+  <a style="text-decoration: underline" routerLink="/devices/add">create</a>
+  more
+</p>
+
+<div *ngFor="let device of devices" class="card mt-3">
   <div class="card-header">
+    <i class="material-icons mr-2" style="font-size: 36px; position: relative; top: 5px">
+      {{device_types_icon[device.device_type]}}</i>
     {{device.name}}
-    <button class="btn btn-danger float-right" (click)="sendDeleteDevice(device)">Delete</button>
-    <button class="btn btn-info float-right mr-2" routerLink="/devices/{{device.did}}/edit" routerLinkActive="active">Edit
-    </button>
+    <a class="float-right" style="color: black; cursor: pointer" (click)="sendDeleteDevice(device)">
+      <i class="material-icons">delete</i>
+    </a>
+    <a class="float-right mr-2" routerLink="/devices/{{device.did}}/edit">
+      <i class="material-icons" style="color: black">mode_edit</i>
+    </a>
   </div>
-  <div class="card-body">
-    <p class="card-text">{{device.description}}</p>
-    <button class="btn btn-primary float-right" routerLink="/devices/{{device.did}}/tracks" routerLinkActive="active">
-      See
-      tracks
+  <div class="card-body ml-5">
+    <p class="card-text" *ngIf="device.description">{{device.description}}</p>
+    <p class="card-text" *ngIf="device.device_privacy">This device is {{device_privacies[device.device_privacy]}}</p>
+    <p class="card-text" *ngIf="device.device_imei">IMEI: {{device.device_imei}}</p>
+    <button class="btn btn-primary float-right" (click)="saveDeviceName(device.name)"
+            routerLink="/devices/{{device.did}}/tracks" routerLinkActive="active">
+      See tracks
     </button>
   </div>
 </div>

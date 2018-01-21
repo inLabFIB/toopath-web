@@ -1,0 +1,18 @@
+<div class="form-width">
+  <form (ngSubmit)="sendPostTrackLocation()" #logInForm="ngForm">
+    <h1>Add location</h1>
+
+    <div class="form-group">
+      <label for="latitude">Latitude</label>
+      <input type="text" class="form-control" id="latitude" [(ngModel)]="location.latitude" required name="latitude">
+    </div>
+
+    <div class="form-group">
+      <label for="longitude">Longitude</label>
+      <input type="text" class="form-control" id="longitude" [(ngModel)]="location.longitude" required
+             name="longitude">
+    </div>
+
+    <button type="submit" class="btn btn-success btn-block mt-5">Add</button>
+  </form>
+</div>

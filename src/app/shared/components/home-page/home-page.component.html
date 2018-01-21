@@ -1,0 +1,17 @@
+<div class="mt-5" style="text-align: center" *ngIf="!isLogged">
+  <h1>TooPath let's you manage<br> your devices and tracks</h1>
+  <p class="mt-5">Locate your devices and see your<br> tracks on OpenStreetMap</p>
+  <button class="btn btn-lg btn-success mt-5" routerLink="/signUp" routerLinkActive="active">Sign
+    Up - it's free
+  </button>
+  <p class="mt-2">Already use TooPath? <a style="text-decoration: underline" routerLink="/logIn">Log In</a></p>
+</div>
+<div class="mt-5" style="text-align: center" *ngIf="isLogged">
+  <h1>Welcome to TooPath</h1>
+  <p class="mt-5">Manage your tracks and devices.
+    <a style="text-decoration: underline" routerLink="/devices">Go</a>
+  </p>
+  <p class="mt-2">See your tracks on OpenStreetMap.
+    <a style="text-decoration: underline" routerLink="/map">Go</a>
+  </p>
+</div>

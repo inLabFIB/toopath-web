@@ -1,10 +1,45 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
-body {
-  padding-top: 80px;
-}
-
 .starter-template {
   padding: 3rem 1.5rem;
   text-align: center;
+}
+
+body {
+  padding: 90px 0 0;
+}
+
+.nav-link, .navbar-brand{
+  color: azure !important;
+}
+
+.navbar-brand {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+button {
+  box-shadow: 2px 2px 5px grey;
+}
+
+.card {
+  background-color: #b5e3e8 !important;
+}
+
+.form-width {
+  width: 50%;
+  margin: auto;
+}
+
+.card-header {
+  font-size: x-large !important;
+  font-weight: bold;
+}
+
+.card-body{
+  font-style: italic;
+}
+
+.card-text {
+  color: black !important;
 }

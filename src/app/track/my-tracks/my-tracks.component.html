@@ -1,14 +1,31 @@
-<button class="btn btn-success" routerLink="/devices/{{deviceId}}/tracks/add" routerLinkActive="active">Create track
-</button>
-<div *ngFor="let track of tracks" class="card bg-light mt-3">
+<h2>Tracks of {{deviceName}}</h2>
+
+<p class="mt-2">These are all the tracks of {{deviceName}}, if yoy want you can
+  <a style="text-decoration: underline" routerLink="/devices/{{deviceId}}/tracks/add">create</a>
+  more
+</p>
+
+<div *ngFor="let track of tracks" class="card mt-3">
   <div class="card-header">
     {{track.name}}
-    <button class="btn btn-danger float-right" (click)="sendDeleteTrack(track)">Delete</button>
-    <button class="btn btn-info float-right mr-2" routerLink="/devices/{{deviceId}}/tracks/{{track.tid}}/edit"
-            routerLinkActive="active">Edit
-    </button>
+    <a class="float-right" style="color: black; cursor: pointer" (click)="sendDeleteTrack(track)">
+      <i class="material-icons">delete</i>
+    </a>
+    <a class="float-right mr-2" routerLink="/devices/{{deviceId}}/tracks/{{track.tid}}/edit">
+      <i class="material-icons" style="color: black">mode_edit</i>
+    </a>
   </div>
   <div class="card-body">
-    <p class="card-text">{{track.description}}</p>
+    <p class="card-text" *ngIf="track.description" style="color: black">{{track.description}}</p>
+    <p class="card-text" style="color: black">Number of locations: {{track.locations.features.length}}</p>
+    <button class="btn btn-primary float-right" *ngIf="track.locations.features.length != 0"
+            routerLink="/devices/{{deviceId}}/tracks/{{track.tid}}/map" routerLinkActive="active"
+            (click)="saveTrackName(track.name)">
+      See on map
+    </button>
+    <button class="btn btn-primary float-right mr-2"
+            routerLink="/devices/{{deviceId}}/tracks/{{track.tid}}/location/add"
+            routerLinkActive="active">Add location
+    </button>
   </div>
 </div>

@@ -1,17 +1,19 @@
-<form (ngSubmit)="sendPutTrack()" #logInForm="ngForm">
-  <h1>Edit track</h1>
+<div class="form-width">
+  <form (ngSubmit)="sendPutTrack()" #logInForm="ngForm">
+    <h1>Edit track</h1>
 
-  <div class="form-group">
-    <label for="track-name">Name</label>
-    <input type="text" class="form-control" id="track-name" [(ngModel)]="track.name" required name="trackName"
-           value="{{track.name}}">
-  </div>
+    <div class="form-group">
+      <label for="track-name">Name</label>
+      <input type="text" class="form-control" id="track-name" [(ngModel)]="track.name" required name="trackName"
+             value="{{track.name}}">
+    </div>
 
-  <div class="form-group">
-    <label for="track-description">Description</label>
-    <input type="text" class="form-control" id="track-description" [(ngModel)]="track.description" required
-           name="trackDescription" value="{{track.description}}">
-  </div>
+    <div class="form-group">
+      <label for="track-description">Description</label>
+      <input type="text" class="form-control" id="track-description" [(ngModel)]="track.description" required
+             name="trackDescription" value="{{track.description}}">
+    </div>
 
-  <button type="submit" class="btn btn-success">Create</button>
-</form>
+    <button type="submit" class="btn btn-success btn-block">Create</button>
+  </form>
+</div>

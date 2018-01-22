@@ -1,3 +1,5 @@
 <h2 class="mb-2">{{trackName}} visualization</h2>
-<div id="map" style="height: 500px;" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)">
+<div class="embed-container">
+  <div class="map" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)">
+  </div>
 </div>

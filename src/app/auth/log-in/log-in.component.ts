@@ -2,7 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {User} from '../../objects/user';
 import {Router} from '@angular/router';
 import {AuthUserService} from '../services/auth-user.service';
-import {GoogleSignInSuccess} from 'angular-google-signin';
+import {GoogleSignInComponent, GoogleSignInSuccess} from 'angular-google-signin';
 
 @Component({
   selector: 'app-app-log-in',
@@ -11,7 +11,7 @@ import {GoogleSignInSuccess} from 'angular-google-signin';
 })
 export class AppLogInComponent implements OnInit {
 
-  @ViewChild('logInButton') logInButton: ElementRef;
+  @ViewChild('logInButton', {read: ElementRef}) logInButton: ElementRef;
   user: User;
   googleWidth: number;
   private myClientId: string = '349015628188-7bpejun8mdc78d5chh7gk92u8dmttjl7.apps.googleusercontent.com';

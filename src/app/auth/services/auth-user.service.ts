@@ -42,7 +42,6 @@ export class AuthUserService implements CanActivate {
 
   private announceIsLogged() {
     let isLogged = this.isAuthenticated();
-    console.log("changing logged a " + isLogged);
     this.isLoggedSource.next(isLogged);
   }
 

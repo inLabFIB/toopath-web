@@ -9,7 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 We provide a **Dockerfile** to build and image and setup a TooPath web instance, you should run:
 
 ```
-docker build -t toopath/web
+docker build -t toopath/web .
 docker run --name web -p 4200:4200 toopath/web
 ```
 

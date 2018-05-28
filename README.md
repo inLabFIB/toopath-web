@@ -6,6 +6,13 @@ This project was developed as a front-end of the **[TooPath API](https://github.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+We provide a **Dockerfile** to build and image and setup a TooPath web instance, you should run:
+
+```
+docker build -t toopath/web
+docker run --name web -p 4200:4200 toopath/web
+```
+
 ### Prerequisites
 
 * Install **[Node.js 8.9.4](https://nodejs.org/en/download/)**.

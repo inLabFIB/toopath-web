@@ -1,23 +1,31 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
+import {Observable} from 'rxjs/internal/Observable';
+import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
 
-import { HomePageComponent } from './home-page.component';
+import {HomePageComponent} from './home-page.component';
+import {AuthUserService} from '../../../auth/services/auth-user.service';
+
+class AuthUserServiceMock {
+  isLogged$: Observable<boolean>;
+
+  constructor() {
+    this.isLogged$ = new BehaviorSubject<boolean>(true).asObservable();
+  }
+}
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
-  let fixture: ComponentFixture<HomePageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomePageComponent ]
-    })
-    .compileComponents();
+      declarations: [ HomePageComponent ],
+      providers: [
+        {provide: AuthUserService, AuthUserServiceMock}
+      ]
+    });
+    const fixture = TestBed.createComponent(HomePageComponent);
+    component = fixture.debugElement.componentInstance;
   }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HomePageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

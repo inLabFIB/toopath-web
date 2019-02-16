@@ -7,6 +7,6 @@ install:
 
 script:
   - ng lint
-  - ng test
+  - ng test --watch=false --browsers=ChromeHeadless
   - ng e2e
-  - ng build --prod --base-href https://t-palmer.github.io/travis-demo/
+  - ng build

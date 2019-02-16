@@ -10,7 +10,7 @@ We provide a **Dockerfile** to build and image and setup a TooPath web instance,
 
 ```
 docker build -t toopath/web .
-docker run --name web -p 4200:4200 toopath/web
+docker run --name web -p 4200:80 toopath/web
 ```
 
 ### Prerequisites

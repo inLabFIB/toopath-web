@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 
 import {DeviceApiService} from '../services/device-api.service';
 import {Device} from '../../objects/device';
@@ -18,7 +17,7 @@ export class AppMyDevicesComponent implements OnInit {
   device_types_icon: any = DEVICES_TYPE_ICONS;
   device_privacies: any = DEVICES_PRIVACIES;
 
-  constructor(private _deviceApiService: DeviceApiService, private _router: Router) {
+  constructor(private _deviceApiService: DeviceApiService) {
   }
 
   ngOnInit() {

@@ -1,24 +1,20 @@
-FROM node:8.9.4
+FROM node:10.15.1-alpine
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
 COPY package*.json ./
 
-RUN npm install
+RUN npm set progress=false && npm install
 
+# Copy project files into the docker image
 COPY . .
+
+RUN npm install -g @angular/cli@7.3.1
+RUN ng build --aot
 
 EXPOSE 4200
 
-USER node
-RUN mkdir /home/node/.npm-global
-ENV PATH=/home/node/.npm-global/bin:$PATH
-ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
-RUN npm install -g @angular/cli@1.6.0
-
 # start app
-CMD ng serve -host 0.0.0.0 --environment=docker
+CMD ng serve --host=0.0.0.0 -c docker --aot

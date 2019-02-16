@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {environment} from "../../../environments/environment";
-import {DEVICE_URL, TRACK_URL} from "../../shared/constants";
-import {Track} from "../../objects/track";
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+
+import {environment} from '../../../environments/environment';
+import {DEVICE_URL, TRACK_URL} from '../../shared/constants';
+import {Track} from '../../objects/track';
 
 @Injectable()
 export class TrackApiService {

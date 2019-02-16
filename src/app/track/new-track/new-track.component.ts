@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Track} from "../../objects/track";
-import {ActivatedRoute, Router} from "@angular/router";
-import {TrackApiService} from "../services/track-api.service";
+import {ActivatedRoute, Router} from '@angular/router';
+
+import {Track} from '../../objects/track';
+import {TrackApiService} from '../services/track-api.service';
 
 @Component({
   selector: 'app-new-track',

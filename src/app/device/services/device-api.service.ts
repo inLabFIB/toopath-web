@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {Device} from "../../objects/device";
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../environments/environment";
-import {Observable} from "rxjs";
-import {DEVICE_URL} from "../../shared/constants";
+import {HttpClient} from '@angular/common/http';
+
+import {Observable} from 'rxjs';
+import {Device} from '../../objects/device';
+import {environment} from '../../../environments/environment';
+import {DEVICE_URL} from '../../shared/constants';
 
 @Injectable()
 export class DeviceApiService {

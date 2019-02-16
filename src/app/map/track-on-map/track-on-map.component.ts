@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {latLng, point, polyline, tileLayer} from 'leaflet';
-import {Track} from '../../objects/track';
 import {ActivatedRoute} from '@angular/router';
+import {Map, latLng, point, polyline, tileLayer} from 'leaflet';
+
+import {Track} from '../../objects/track';
 import {TrackApiService} from '../../track/services/track-api.service';
-import {Map} from 'leaflet';
 
 @Component({
   selector: 'app-track-on-map',
@@ -40,7 +40,7 @@ export class TrackOnMapComponent implements OnInit {
     this._trackApiService.getTrack(this.deviceId, this.trackId).subscribe(
       result => {
         this.track = <Track>result;
-        for (let feature of result.locations.features) {
+        for (const feature of result.locations.features) {
           this.route.addLatLng(feature.geometry.coordinates);
         }
         map.fitBounds(this.route.getBounds(), {

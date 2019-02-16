@@ -14,7 +14,7 @@ export class AuthUserService implements CanActivate {
   isLogged$: Observable<boolean>;
 
   constructor(private _http: HttpClient, private _router: Router) {
-    let isLogged = this.isAuthenticated();
+    const isLogged = this.isAuthenticated();
     this.isLoggedSource = new BehaviorSubject<boolean>(isLogged);
     this.isLogged$ = this.isLoggedSource.asObservable();
   }
@@ -40,7 +40,7 @@ export class AuthUserService implements CanActivate {
   }
 
   private announceIsLogged() {
-    let isLogged = this.isAuthenticated();
+    const isLogged = this.isAuthenticated();
     this.isLoggedSource.next(isLogged);
   }
 
@@ -58,7 +58,7 @@ export class AuthUserService implements CanActivate {
 
   private googleLogOut() {
     this.googleLogged = false;
-    let gauth2 = gapi.auth2.getAuthInstance();
+    const gauth2 = gapi.auth2.getAuthInstance();
     gauth2.signOut().then();
   }
 
@@ -74,7 +74,7 @@ export class AuthUserService implements CanActivate {
   }
 
   async postGoogleLogIn(token: string, email: string, name: string) {
-    let body = {
+    const body = {
       'google_token': token,
       'email': email,
       'name': name

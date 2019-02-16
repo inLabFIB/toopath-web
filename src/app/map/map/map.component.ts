@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {latLng, Map, polyline, tileLayer} from 'leaflet';
-import {Track} from '../../objects/track';
+
 import {DeviceApiService} from '../../device/services/device-api.service';
 import {COLORS} from '../../shared/constants';
 
@@ -22,7 +22,7 @@ export class MapComponent implements OnInit {
     zoom: 14,
     center: latLng(41.389400, 2.113399)
   };
-  noTracks: boolean = true;
+  noTracks = true;
   devices: any;
 
   constructor(private _deviceApiService: DeviceApiService) {
@@ -31,7 +31,7 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this._deviceApiService.getDevices().subscribe(
       result => {
-        if (result.length > 0) this.noTracks = false;
+        if (result.length > 0) { this.noTracks = false; }
         this.devices = result;
       }, error => {
         console.log(error);
@@ -40,12 +40,12 @@ export class MapComponent implements OnInit {
 
   onMapReady(map: Map) {
     let color_number = 1;
-    for (let device of this.devices) {
+    for (const device of this.devices) {
       color_number += 1;
-      for (let track of device.tracks) {
-        let route = polyline([]);
+      for (const track of device.tracks) {
+        const route = polyline([]);
         route.options.color = COLORS[color_number];
-        for (let feature of track.locations.features) {
+        for (const feature of track.locations.features) {
           route.addLatLng(feature.geometry.coordinates);
         }
         this.layersControl.overlays[device.name + ' - ' + track.name] = route;

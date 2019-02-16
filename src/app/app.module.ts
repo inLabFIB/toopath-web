@@ -53,7 +53,7 @@ import {UserApiService} from './user/services/user-api.service';
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot(),
+    NgbModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpClientModule,

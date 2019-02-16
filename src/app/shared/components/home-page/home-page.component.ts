@@ -15,7 +15,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     this._authUserService.isLogged$.subscribe(async isLogged => {
       this.isLogged = isLogged;
-    })
+    });
   }
 
 }

@@ -15,8 +15,8 @@ docker run --name web -p 4200:4200 toopath/web
 
 ### Prerequisites
 
-* Install **[Node.js 8.9.4](https://nodejs.org/en/download/)**.
-* Install **Angular CLI 1.7.4** via ```npm install -g @angular/cli@1.7.4```.
+* Install **[Node.js 10.15.1](https://nodejs.org/en/download/)**.
+* Install **Angular CLI 7.3.1** via ```npm install -g @angular/cli@7.3.1```.
 
 ### Dependencies
 

@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {User} from '../../objects/user';
 import {CanActivate, Router} from '@angular/router';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable} from 'rxjs/Observable';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {PostLogin} from '../../shared/interfaces/log-in.interface';

@@ -1,24 +1,26 @@
-FROM node:8.9.4
+FROM node:10.15.1-alpine as builder
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
 COPY package*.json ./
+RUN npm set progress=false && npm install
 
-RUN npm install
-
+# Copy project files into the docker image
 COPY . .
 
-EXPOSE 4200
+RUN npm install -g @angular/cli@7.3.1
+RUN ng build -c docker --aot
 
-USER node
-RUN mkdir /home/node/.npm-global
-ENV PATH=/home/node/.npm-global/bin:$PATH
-ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
-RUN npm install -g @angular/cli@1.6.0
+# Build a small nginx image with static website
+FROM nginx:alpine
 
-# start app
-CMD ng serve -host 0.0.0.0 --environment=docker
+## Remove default nginx website
+RUN rm -rf /usr/share/nginx/html/*
+
+## From 'builder' copy website to default nginx public folder
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

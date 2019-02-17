@@ -1,23 +1,21 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
+import {FormsModule} from '@angular/forms';
 
 import { AppLogInComponent } from './log-in.component';
+import {AuthUserService} from '../services/auth-user.service';
 
 describe('AppLogInComponent', () => {
   let component: AppLogInComponent;
-  let fixture: ComponentFixture<AppLogInComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppLogInComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AppLogInComponent);
+      declarations: [ AppLogInComponent ],
+      imports: [ FormsModule ],
+      providers: [{ provide: AuthUserService, useValue: jasmine.createSpy() } ],
+    });
+    const fixture = TestBed.createComponent(AppLogInComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

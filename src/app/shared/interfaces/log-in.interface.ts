@@ -1,6 +1,6 @@
-import {User} from "../../objects/user";
+import {User} from '../../objects/user';
 
 export interface PostLogin {
-  user: User,
+  user: User;
   token: string;
 }

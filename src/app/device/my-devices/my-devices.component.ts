@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+
 import {DeviceApiService} from '../services/device-api.service';
 import {Device} from '../../objects/device';
 import {User} from '../../objects/user';
-import {Router} from '@angular/router';
 import {DEVICES_PRIVACIES, DEVICES_TYPE_ICONS} from '../../shared/constants';
 
 @Component({
@@ -17,7 +17,7 @@ export class AppMyDevicesComponent implements OnInit {
   device_types_icon: any = DEVICES_TYPE_ICONS;
   device_privacies: any = DEVICES_PRIVACIES;
 
-  constructor(private _deviceApiService: DeviceApiService, private _router: Router) {
+  constructor(private _deviceApiService: DeviceApiService) {
   }
 
   ngOnInit() {
@@ -34,7 +34,7 @@ export class AppMyDevicesComponent implements OnInit {
   sendDeleteDevice(device: Device) {
     this._deviceApiService.deleteDevice(device.did).subscribe(
       succes => {
-        let index = this.devices.indexOf(device, 0);
+        const index = this.devices.indexOf(device, 0);
         if (index > -1) {
           this.devices.splice(index, 1);
         }
@@ -42,6 +42,6 @@ export class AppMyDevicesComponent implements OnInit {
   }
 
   saveDeviceName(deviceName: string) {
-    localStorage.setItem("currentDeviceName", deviceName);
+    localStorage.setItem('currentDeviceName', deviceName);
   }
 }

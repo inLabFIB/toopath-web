@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Track} from '../../objects/track';
 import {ActivatedRoute} from '@angular/router';
+
+import {Track} from '../../objects/track';
 import {TrackApiService} from '../services/track-api.service';
 
 @Component({
@@ -35,7 +36,7 @@ export class MyTracksComponent implements OnInit {
   sendDeleteTrack(track: Track) {
     this._trackApiService.deleteTrack(this.deviceId, track.tid).subscribe(
       succes => {
-        let index = this.tracks.indexOf(track, 0);
+        const index = this.tracks.indexOf(track, 0);
         if (index > -1) {
           this.tracks.splice(index, 1);
         }

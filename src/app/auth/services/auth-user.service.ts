@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {User} from '../../objects/user';
-import {CanActivate, Router} from '@angular/router';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {CanActivate, Router} from '@angular/router';
+import {BehaviorSubject, Observable} from 'rxjs';
+
+import {User} from '../../objects/user';
 import {environment} from '../../../environments/environment';
 import {PostLogin} from '../../shared/interfaces/log-in.interface';
 
@@ -11,11 +11,10 @@ import {PostLogin} from '../../shared/interfaces/log-in.interface';
 export class AuthUserService implements CanActivate {
 
   private isLoggedSource: BehaviorSubject<boolean>;
-  private googleLogged: boolean;
   isLogged$: Observable<boolean>;
 
   constructor(private _http: HttpClient, private _router: Router) {
-    let isLogged = this.isAuthenticated();
+    const isLogged = this.isAuthenticated();
     this.isLoggedSource = new BehaviorSubject<boolean>(isLogged);
     this.isLogged$ = this.isLoggedSource.asObservable();
   }
@@ -41,7 +40,7 @@ export class AuthUserService implements CanActivate {
   }
 
   private announceIsLogged() {
-    let isLogged = this.isAuthenticated();
+    const isLogged = this.isAuthenticated();
     this.isLoggedSource.next(isLogged);
   }
 
@@ -57,12 +56,6 @@ export class AuthUserService implements CanActivate {
     this.announceIsLogged();
   }
 
-  private googleLogOut() {
-    this.googleLogged = false;
-    let gauth2 = gapi.auth2.getAuthInstance();
-    gauth2.signOut().then();
-  }
-
   async postLogin(user: User) {
     this._http.post<PostLogin>(environment.apiUrl + 'login/', user).subscribe(
       result => {
@@ -74,27 +67,7 @@ export class AuthUserService implements CanActivate {
       });
   }
 
-  async postGoogleLogIn(token: string, email: string, name: string) {
-    let body = {
-      'google_token': token,
-      'email': email,
-      'name': name
-    };
-    this._http.post<PostLogin>(environment.apiUrl + 'login-google/', body).subscribe(
-      result => {
-        this.googleLogged = true;
-        this.setUserToLocalStorage(result);
-        this._router.navigate(['/devices']);
-      }, error => {
-        console.log(error);
-      }
-    );
-  }
-
   async logout() {
-    if (this.googleLogged) {
-      await this.googleLogOut();
-    }
     localStorage.removeItem('currentUser');
     this.setToken(null);
     this.announceIsLogged();

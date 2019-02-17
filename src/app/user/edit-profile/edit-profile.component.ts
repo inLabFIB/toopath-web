@@ -18,7 +18,6 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = <User> this._authUserService.getCurrentUser();
-    console.log(this.currentUser);
   }
 
   sendPutUser() {

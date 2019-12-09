@@ -7,6 +7,9 @@ addons:
 install:
   - npm install -g @angular/cli@7.3.1
   - npm install
+  # Fix error: Chrome version must be between 71 and 75
+  - cd node_modules/protractor
+  - npm i webdriver-manager@latest
 
 script:
   - ng lint
